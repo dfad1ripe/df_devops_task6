@@ -1,0 +1,8 @@
+C:
+cd \inetpub\wwwroot
+$results = (C:\Progra~1\Git\bin\git.exe pull <%= node['Task6']['repo']['url'] %>) | Out-String
+if ($results -Match "Updating") {
+  Write-Host Restarting IIS
+  cmd.exe /c net stop w3svc
+  cmd.exe /c net start w3svc
+}

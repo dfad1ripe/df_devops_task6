@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+  network:
+  - ["forwarded_port", {guest: 80, host: 8080}]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: w2012r2-upd
+    transport:
+      name: winrm
+
+suites:
+  - name: default
+    run_list:
+      - recipe[Task6::default]
+    attributes:
